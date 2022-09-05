@@ -10,7 +10,8 @@ namespace AppStore.Controllers
     [HttpGet]
     public IActionResult GetAll()
     {
-      return Ok("");
+
+      return Ok("[%%]");
     }
 
     [HttpGet]

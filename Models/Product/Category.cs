@@ -8,5 +8,11 @@
     {
       Description = "";
     }
+
+    public Category(int id, string description)
+    {
+      Id = id;
+      Description = description;
+    }
   }
 }

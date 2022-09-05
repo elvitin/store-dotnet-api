@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"uri": "vscode-remote://wsl+ubuntu/mnt/c/Users/taveira/AppData/Local/Temp/TrabalhoECommerceAPI"
+		},
+		{
+			"uri": "vscode-remote://wsl+ubuntu/mnt/c/Users/taveira/AppData/Local/Temp/IntroADONET"
+		}
+	],
+	"remoteAuthority": "wsl+Ubuntu",
+	"settings": {}
+}
