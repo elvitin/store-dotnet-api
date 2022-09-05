@@ -44,7 +44,7 @@ namespace AppStore.Controllers
     [HttpPost]
     public IActionResult Create(UnityViewModel unityVm)
     {
-      Unity unity = new Unity(unityVm.Description);
+      Unity unity = new(unityVm.Description);
       UnityRepository.AddUnity(unity);
       Console.WriteLine("Unity created!");
       return NoContent();

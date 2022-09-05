@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AppStore.Models.MemoryDatabase;
+using AppStore.Models.Product;
+using AppStore.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppStore.Controllers
@@ -10,32 +12,51 @@ namespace AppStore.Controllers
     [HttpGet]
     public IActionResult GetAll()
     {
-
-      return Ok("");
+      Console.WriteLine("Get Categories...");
+      return Ok(CategoryRepository.categories);
     }
 
-    [HttpGet]
-    public IActionResult GetOne(int it)
+    [HttpGet("{id:int}")]
+    public IActionResult GetOne(int id)
     {
-      return Ok("");
+      Console.WriteLine("Get category by id...");
+      var category = CategoryRepository.GetById(id);
+      if (category != null)
+        return Ok(category);
+      return NotFound();
     }
 
     [HttpPost]
-    public IActionResult Create()
+    public IActionResult Create(CategoryViewModel categoryVm)
     {
-      return Ok("");
+      Console.WriteLine("Create category...");
+      Category category = new()
+      {
+        Description = categoryVm.Description
+      };
+      CategoryRepository.Insert(category);
+      return Ok(category);
     }
 
-    [HttpPut]
-    public IActionResult Update(int id)
+    [HttpPut("{id:int}")]
+    public IActionResult Update(int id, CategoryViewModel categoryVm)
     {
-      return Ok("");
+      Console.WriteLine("Update category...");
+      var category = CategoryRepository.categories.Find(item => item.Id == id);
+      if(category != null)
+      {
+        category.Description = categoryVm.Description;
+        return Ok(category);
+      }
+      return NotFound();
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-      return Ok("");
+      if(CategoryRepository.DeleteCategory(id))
+        return NoContent();
+      return NotFound();
     }
   }
 }

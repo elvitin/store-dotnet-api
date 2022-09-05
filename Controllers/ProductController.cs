@@ -11,14 +11,14 @@ namespace AppStore.Controllers
   public class ProductController : ControllerBase
   {
     [HttpGet]
-    public IActionResult getAll()
+    public IActionResult GetAll()
     {
       Console.WriteLine("Get All Products!");
       return Ok(ProductRepository.products);
     }
 
     [HttpPost]
-    public IActionResult createProduct(ProductViewModel productVm)
+    public IActionResult CreateProduct(ProductViewModel productVm)
     {
       Console.WriteLine("New Product");
       Product newProduct = new()
